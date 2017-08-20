@@ -42,6 +42,10 @@ public class ReversiResource {
         return Flux.create(sink -> {
             MessageHandler handler = msg -> sink.next(String.class.cast(msg.getPayload()));
             channelsRegistry.resolve(uuid).subscribe(handler);
+            
+            sink.onDispose(() -> {
+                System.out.println("kjlkzjdlkz");
+            });
         });
     }
 
