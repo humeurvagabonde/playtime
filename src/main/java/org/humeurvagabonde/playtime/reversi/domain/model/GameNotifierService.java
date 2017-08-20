@@ -2,8 +2,8 @@ package org.humeurvagabonde.playtime.reversi.domain.model;
 
 import java.util.UUID;
 
-public interface NotificateurTourService {
+public interface GameNotifierService {
 
-    void notifierFinDeTour(UUID gameId);
+    void notifierFinDeTour(String gameId);
 
 }

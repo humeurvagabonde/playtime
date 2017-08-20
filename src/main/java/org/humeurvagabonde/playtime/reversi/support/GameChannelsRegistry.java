@@ -13,9 +13,9 @@ import java.util.UUID;
 @Singleton
 public class GameChannelsRegistry {
 
-    private final LinkedHashMap<UUID, SubscribableChannel> channels = new LinkedHashMap<>();
+    private final LinkedHashMap<String, SubscribableChannel> channels = new LinkedHashMap<>();
 
-    public SubscribableChannel resolve(UUID id) {
+    public SubscribableChannel resolve(String id) {
         SubscribableChannel channel = this.channels.get(id);
         if (channel == null) {
             channel = createNewChannel(id);
@@ -23,7 +23,7 @@ public class GameChannelsRegistry {
         return channel;
     }
 
-    private synchronized SubscribableChannel createNewChannel(UUID id) {
+    private synchronized SubscribableChannel createNewChannel(String id) {
         SubscribableChannel channel = this.channels.get(id);
         if (channel == null) {
             channel = MessageChannels.publishSubscribe(id.toString()).get();
