@@ -26,7 +26,10 @@ public class GameChannelsRegistry {
     private synchronized SubscribableChannel createNewChannel(String id) {
         SubscribableChannel channel = this.channels.get(id);
         if (channel == null) {
-            channel = MessageChannels.publishSubscribe(id.toString()).get();
+            channel = MessageChannels.publishSubscribe(id.toString())
+                    .minSubscribers(1)
+                    .get();
+
             this.channels.put(id, channel);
         }
         return channel;
