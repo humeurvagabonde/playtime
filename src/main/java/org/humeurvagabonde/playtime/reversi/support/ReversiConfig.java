@@ -39,15 +39,4 @@ public class ReversiConfig {
 
     }
 
-    /*
-        @Bean
-    public RouterFunction<ServerResponse> routerFunction(ReversiResourceHandler reversiResourceHandler) {
-        return nest(path("/boardgames/reversi/games"),
-                    route(POST("/"), reversiResourceHandler::create)
-                    .andRoute(POST("/{gameId}/action").and(contentType(APPLICATION_JSON)), reversiResourceHandler::play)
-                ).andRoute(GET("/games/{gameId}/actions"), reversiResourceHandler::gameActions);
-
-    }
-
-     */
 }
